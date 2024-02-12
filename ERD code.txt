@@ -1,50 +1,44 @@
-ERD code:
-
 departments
 -
-dept_no VARCHAR(30) FK >- dept_manager.dept_no
+dept_no VARCHAR(30) PK FK -< dept_manager.dept_no
 dept_name VARCHAR(30)
 
 
 dep_emp
 -
-emp_no INT FK >- dept_manager.emp_no
-dept_no VARCHAR(30) FK >- dept_manager.dept_no
+emp_no PK INT FK - employees.emp_no
+dept_no PK VARCHAR(30) FK >- departments.dept_no
 
 
 
 dept_manager
 ----
-dept_no VARCHAR(30)
-emp_no INT FK >- salaries.emp_no
+dept_no FK VARCHAR(30)
+emp_no PK INT FK - employees.emp_no
 
 
 
 employees
 ------------
-emp_no FK >- dep_emp.emp_no
+emp_no PK INT
 emp_title VARCHAR(30) FK >- titles.title_id
-birth_date DATE
+birth_date VARCHAR(30)
 first_name VARCHAR(30)
 last_name VARCHAR(30)
 sex VARCHAR(30)
-hire_date DATE
+hire_date VARCHAR(30)
 
 
 
 salaries
 ----
-emp_no INT FK >- employees.emp_no
+ID SERIAL PK
+emp_no INT FK - employees.emp_no
 salary INT
 
 
 
 titles
 ----
-title_id VARCHAR(30)
+title_id PK VARCHAR(30)
 title VARCHAR(30)
-
-
-#CustomerID int FK >- Customer.CustomerID
-#TotalAmount money
-#OrderStatusID int FK >- os.OrderStatusID
